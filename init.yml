@@ -1,0 +1,31 @@
+- hosts: localhost
+  name: Init local dev machine
+  become: true
+  vars:
+    source_dir: "./.ssh/"
+    dest_dir: "{{ lookup('env', 'HOME') }}/.ssh/"
+  pre_tasks:
+    - name: Update Apt
+      become: true
+      ansible.builtin.apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+      tags:
+        - install
+        - core
+  tasks:
+    - name: Zsh_tasks
+      ansible.builtin.include_tasks: intasks/zsh.yml
+    - name: Tool_tasks
+      ansible.builtin.include_tasks: tasks/tools.yml
+    - name: Node_tasks
+      ansible.builtin.include_tasks: tasks/node.yml
+    - name: Language_tasks
+      ansible.builtin.include_tasks: tasks/languages.yml
+    - name: Ssh_tasks
+      ansible.builtin.include_tasks: tasks/ssh.yml
+    - name: Dotfiles_tasks
+      ansible.builtin.include_tasks: tasks/dotfiles.yml
+    - name: Container_tasks
+      ansible.builtin.include_tasks: tasks/container.yml

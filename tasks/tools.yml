@@ -1,0 +1,30 @@
+- name: Install ripgrep
+  ansible.builtin.package:
+    name: ripgrep
+    state: present
+  tags:
+    - tools
+- name: Install fzf
+  ansible.builtin.package:
+    name: fzf
+    state: present
+  tags:
+    - tools
+- name: Install zoxide
+  ansible.builtin.package:
+    name: zoxide
+    state: present
+  tags:
+    - tools
+- name: Install tmux
+  ansible.builtin.package:
+    name: tmux
+    state: present
+  tags:
+    - tools
+- name: Install xclip
+  ansible.builtin.package:
+    name: xclip
+    state: present
+  tags:
+    - tools

@@ -1,0 +1,46 @@
+- name: Install node and npm
+  ansible.builtin.package:
+    name:
+      - nodejs
+      - npm
+    state: present
+  tags:
+    - node
+- name: Install n
+  npm:
+    name: n
+    global: true
+  tags:
+    - node
+- name: Install pnpm
+  shell: curl -fsSL https://get.pnpm.io/install.sh | sh -
+  tags:
+    - node
+- name: Install eslint
+  npm:
+    name: eslint
+    global: true
+  tags:
+    - install
+    - node
+- name: Install Typescript server
+  npm:
+    name: typescript-language-server
+    global: true
+  tags:
+    - install
+    - node
+- name: Install Typescript
+  npm:
+    name: typescript
+    global: true
+  tags:
+    - install
+    - node
+- name: Install TS-Node
+  npm:
+    name: ts-node
+    global: true
+  tags:
+    - install
+    - node

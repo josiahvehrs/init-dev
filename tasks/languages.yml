@@ -17,6 +17,11 @@
   tags:
     - install
     - languages
+- name: Source cargo env
+  shell: source "{{ lookup('env', 'HOME') }}"/.cargo/env
+  tags:
+    - install
+    - languages
 - name: Install rust-analyzer
   shell: rustup component add rust-analyzer-preview
   tags:
